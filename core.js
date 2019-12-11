@@ -97,6 +97,17 @@ let ƒA = function (collection, initialSelector) {
 
 };
 
+// adds an event listener to the element.  The handler element is what gets attached (as is)
+ƒA.prototype.ready = function (handler) {
+    
+    this.each(function () {
+
+        this.addEventListener("DOMContentLoaded", handler, false);
+
+    });
+
+};
+
 // returns the width of the element in scope.  Sets it as well if the newWidth param is provided
 ƒA.prototype.width = function (newWidth) {
     
