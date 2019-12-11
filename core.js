@@ -97,6 +97,44 @@ let ƒA = function (collection, initialSelector) {
 
 };
 
+// returns the width of the element in scope.  Sets it as well if the newWidth param is provided
+ƒA.prototype.width = function (newWidth) {
+    
+    newWidth = newWidth || null;
+
+    if (newWidth !== null) {
+
+        this.each(function () {
+
+            this.style.width = newWidth;
+            
+        });
+
+    }
+
+    return this[0].clientWidth;
+
+};
+
+// returns the height of the element in scope.  Sets it as well if the newHeight param is provided
+ƒA.prototype.height = function (newHeight) {
+    
+    newHeight = newHeight || null;
+
+    if (newHeight !== null) {
+
+        this.each(function () {
+
+            this.style.height = newHeight;
+            
+        });
+
+    }
+
+    return this[0].clientHeight;
+
+};
+
 // Returns true if the selected element is an element of the type provided.
 // Expected values: "div", "ul", "li", "select", etc
 ƒA.prototype.isA = function (expectedDOMElementType) {
