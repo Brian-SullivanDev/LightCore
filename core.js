@@ -23,7 +23,7 @@ let ƒA = function (collection, initialSelector) {
     Prototype functions go here
 */
 
-// return a proper collection object for the element at the provided index from the existing collection
+// add the new class for each element that matches the current selector
 ƒA.prototype.addClass = function (newClass) {
 
     this.each(function() {
@@ -33,6 +33,38 @@ let ƒA = function (collection, initialSelector) {
         if ( (" " + currentClasses + " ").indexOf(newClass) === -1 ) {
 
             this.setAttribute("class", currentClasses + " " + newClass);
+
+        }
+
+    });
+
+}
+
+// returns true if the elements have the class in question and false otherwise.
+ƒA.prototype.hasClass = function (classInQuestion) {
+        
+    let currentClasses = this[0].getAttribute("class");
+
+    if ( (" " + currentClasses + " ").indexOf(classInQuestion) !== -1 ) {
+
+        return true;
+
+    }
+
+    return false;
+
+}
+
+// remove the desired class for each element that currently has it within the selection
+ƒA.prototype.removeClass = function (classToRemove) {
+
+    this.each(function() {
+        
+        let currentClasses = this.getAttribute("class");
+
+        if ( (" " + currentClasses + " ").indexOf(classToRemove) >= 0 ) {
+
+            this.setAttribute("class", (" " + currentClasses + " ").replace((" " + classToRemove + " "), " ").trim());
 
         }
 
